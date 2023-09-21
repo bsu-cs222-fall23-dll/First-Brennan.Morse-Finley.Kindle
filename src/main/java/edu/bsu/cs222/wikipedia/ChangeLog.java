@@ -1,12 +1,9 @@
 package edu.bsu.cs222.wikipedia;
 
 import com.jayway.jsonpath.DocumentContext;
-
-import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 import net.minidev.json.JSONArray;
 
-import javax.print.attribute.standard.DocumentName;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;

@@ -10,13 +10,16 @@ import java.io.InputStream;
 
 public class WikipediaConnection extends User {
 
-    public String makeURL(){
+    public String getUserInput(){
         String userSearch = getSearch();
-        String title = URLEncoder.encode(userSearch, Charset.defaultCharset());
+        return userSearch;
+    }
+    public String makeURL(String search){
+        String title = URLEncoder.encode(search, Charset.defaultCharset());
         return String.format("https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=%s&rvprop=timestamp|user&rvlimit=27&redirects", title);
     }
     public InputStream connectWikipedia(){
-        String urlFormatted = makeURL();
+        String urlFormatted = makeURL(getUserInput());
         try{
             java.net.URL url = new java.net.URL(urlFormatted);
             URLConnection connect = url.openConnection();
