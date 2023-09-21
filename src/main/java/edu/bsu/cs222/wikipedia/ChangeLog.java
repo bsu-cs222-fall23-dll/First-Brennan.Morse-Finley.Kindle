@@ -40,4 +40,8 @@ public class ChangeLog extends WikipediaConnection {
         }
         return timeChangedList;
     }
+    public int countRevisions (DocumentContext info){
+        int revisions = editor(info).size();
+        return revisions;
+    }
 }

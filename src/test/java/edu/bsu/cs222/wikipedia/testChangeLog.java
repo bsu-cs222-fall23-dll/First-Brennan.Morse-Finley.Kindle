@@ -24,6 +24,12 @@ public class testChangeLog extends ChangeLog{
         Assertions.assertEquals("2023-09-07T18:34:43Z", result.get(0));
     }
 
+    @Test
+    public void testChangeLogLength(){
+        int result = countRevisions(sample);
+        Assertions.assertEquals(4, result);
+    }
+
 
 
 }

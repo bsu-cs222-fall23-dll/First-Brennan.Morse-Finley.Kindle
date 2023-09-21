@@ -1,20 +1,9 @@
 package edu.bsu.cs222.wikipedia;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Objects;
-
-import com.jayway.jsonpath.DocumentContext;
-import com.jayway.jsonpath.JsonPath;
-import edu.bsu.cs222.wikipedia.WikipediaConnection;
-import net.minidev.json.JSONArray;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class test {
+public class testConnection {
     @Test
     public void testCreateURL(){
         WikipediaConnection connection = new WikipediaConnection();

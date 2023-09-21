@@ -20,8 +20,14 @@ public class Redirector extends WikipediaConnection {
         ArrayList<String> redirectList = new ArrayList<>();
         if (checkRedirect(info)){
             redirectList.add(path.get(0).toString());
+            if (checkMissingPage(info)){
+                ifPageMissing(info);
+            }
             return redirectList.size();
         } else {
+            if (checkMissingPage(info)){
+                ifPageMissing(info);
+            }
             return 0;
         }
     }
@@ -31,6 +37,16 @@ public class Redirector extends WikipediaConnection {
             return false;
         }else{
             return true;
+        }
+    }
+
+    public boolean checkMissingPage(DocumentContext info){
+        JSONArray path = info.read("$..missing");
+        return path.size()!=0;
+    }
+    public void ifPageMissing(DocumentContext info){
+        if (checkMissingPage(info)){
+            throw new Error("Could not find this page :(");
         }
     }
 
