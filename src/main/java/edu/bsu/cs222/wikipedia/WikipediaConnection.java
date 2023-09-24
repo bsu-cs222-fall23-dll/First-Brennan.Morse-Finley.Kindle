@@ -18,8 +18,8 @@ public class WikipediaConnection extends User {
         String title = URLEncoder.encode(search, Charset.defaultCharset());
         return String.format("https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=%s&rvprop=timestamp|user&rvlimit=27&redirects", title);
     }
-    public InputStream connectWikipedia(){
-        String urlFormatted = makeURL(getUserInput());
+    public InputStream connectWikipedia(String input){
+        String urlFormatted = makeURL(input);
         try{
             java.net.URL url = new java.net.URL(urlFormatted);
             URLConnection connect = url.openConnection();

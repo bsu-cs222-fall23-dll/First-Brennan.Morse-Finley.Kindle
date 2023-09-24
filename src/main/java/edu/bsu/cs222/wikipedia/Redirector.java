@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public class Redirector extends WikipediaConnection {
 
-    public DocumentContext jsonInfo(){
-        return JsonPath.parse(connectWikipedia());
+    public DocumentContext jsonInfo(String input){
+        return JsonPath.parse(connectWikipedia(input));
     }
     //repeated code...... ^^ need to fix
 

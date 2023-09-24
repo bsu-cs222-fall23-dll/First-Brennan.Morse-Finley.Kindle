@@ -9,8 +9,8 @@ import java.util.Map;
 import java.util.List;
 
 public class ChangeLog extends WikipediaConnection {
-    public DocumentContext jsonInfo(){
-        return JsonPath.parse(connectWikipedia());
+    public DocumentContext jsonInfo(String input){
+        return JsonPath.parse(connectWikipedia(input));
     }
 
     public ArrayList<Edit> changeLog(DocumentContext info){
@@ -24,6 +24,7 @@ public class ChangeLog extends WikipediaConnection {
         }
         return newChangeLog;
     }
+
     public ArrayList<String> editor(DocumentContext info){
         JSONArray editor =info.read("$..user");
         ArrayList<String> editorList = new ArrayList<>();
@@ -32,6 +33,7 @@ public class ChangeLog extends WikipediaConnection {
         }
         return editorList;
     }
+
     public ArrayList<String> time(DocumentContext info){
         JSONArray timeChanged = info.read("$..timestamp");
         ArrayList<String> timeChangedList = new ArrayList<>();
@@ -40,6 +42,7 @@ public class ChangeLog extends WikipediaConnection {
         }
         return timeChangedList;
     }
+
     public int countRevisions (DocumentContext info){
         int revisions = editor(info).size();
         return revisions;
