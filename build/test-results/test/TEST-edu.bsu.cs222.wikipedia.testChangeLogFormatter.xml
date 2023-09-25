@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.bsu.cs222.wikipedia.testChangeLogFormatter" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-09-21T17:29:25" hostname="FINSCOMPUTER" time="0.038">
+  <properties/>
+  <testcase name="testChangeLogFormatted()" classname="edu.bsu.cs222.wikipedia.testChangeLogFormatter" time="0.038"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
