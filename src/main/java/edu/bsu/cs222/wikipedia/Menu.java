@@ -1,14 +1,21 @@
 package edu.bsu.cs222.wikipedia;
 
-import com.jayway.jsonpath.DocumentContext;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import java.io.InputStream;
+import static java.awt.Component.BOTTOM_ALIGNMENT;
 
-public class Menu {
-
+public class Menu extends JFrame implements ActionListener{
+    static JFrame frame;
 
     public static void main(String[] args){
         String output;
+        frame = new JFrame("frame");
+        Menu function = new Menu();
+        JPanel panel = new JPanel();
+        JButton button = new JButton("close");
+        button.addActionListener(function);
 
         User input = new User();
         Redirector redirect = new Redirector();
@@ -21,12 +28,24 @@ public class Menu {
         String format = output;
         redirect.jsonInfo(format);
 
+        String information = changeLogFormatter.changeLogToString(changeLog.jsonInfo(format));
 
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
-        System.out.println(changeLogFormatter.changeLogToString(changeLog.jsonInfo(format)));
-
-        System.out.println(changeLog.time(changeLog.jsonInfo(format)));
+        frame.add(panel);
+        panel.add(button);
+        frame.setSize(700, 600);
+        JLabel text = new JLabel("<html>" + information + "</html>", JLabel.CENTER);
+        frame.add(text);
+        frame.setVisible(true);
+        System.out.println(information);
     }
 
-
+    @Override
+    public void actionPerformed(ActionEvent click) {
+        String function = click.getActionCommand();
+        if (function.equals("close")) {
+            frame.setVisible(false);
+        }
+    }
 }
