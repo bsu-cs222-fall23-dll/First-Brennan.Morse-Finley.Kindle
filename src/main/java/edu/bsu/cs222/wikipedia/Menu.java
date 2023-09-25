@@ -4,16 +4,14 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static java.awt.Component.BOTTOM_ALIGNMENT;
-
 public class Menu extends JFrame implements ActionListener{
     static JFrame frame;
 
     public static void main(String[] args){
         String output;
-        frame = new JFrame("frame");
+        frame = new JFrame("Wikipedia Information");
         Menu function = new Menu();
-        JPanel panel = new JPanel();
+        JLayeredPane panel = new JLayeredPane();
         JButton button = new JButton("close");
         button.addActionListener(function);
 
@@ -24,21 +22,21 @@ public class Menu extends JFrame implements ActionListener{
         RedirectFormatter formatRedirect = new RedirectFormatter();
 
         output = input.getSearch();
-
         String format = output;
         redirect.jsonInfo(format);
 
         String information = changeLogFormatter.changeLogToString(changeLog.jsonInfo(format));
+        String redirectInfo = formatRedirect.redirectFormat(changeLog.jsonInfo(format));
+        JLabel overallFormatted = new JLabel("<html>" + information + "<br/><br/>" + redirectInfo + "</html>", JLabel.CENTER);
 
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        overallFormatted.setBounds(10, 10, 660, 500);
+        button.setBounds(300, 520, 100, 30);
+        panel.add(overallFormatted, JLayeredPane.DEFAULT_LAYER);
+        panel.add(button, JLayeredPane.PALETTE_LAYER);
 
         frame.add(panel);
-        panel.add(button);
         frame.setSize(700, 600);
-        JLabel text = new JLabel("<html>" + information + "</html>", JLabel.CENTER);
-        frame.add(text);
         frame.setVisible(true);
-        System.out.println(information);
     }
 
     @Override
@@ -46,6 +44,8 @@ public class Menu extends JFrame implements ActionListener{
         String function = click.getActionCommand();
         if (function.equals("close")) {
             frame.setVisible(false);
+            frame.dispose();
+            System.exit(0);
         }
     }
 }

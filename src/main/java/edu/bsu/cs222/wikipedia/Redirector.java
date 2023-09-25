@@ -13,7 +13,7 @@ public class Redirector extends WikipediaConnection {
     public DocumentContext jsonInfo(String input){
         return JsonPath.parse(connectWikipedia(input));
     }
-    //repeated code...... ^^ need to fix
+
 
     public int redirectCount(DocumentContext info){
         JSONArray path = info.read("$..to");
@@ -44,9 +44,10 @@ public class Redirector extends WikipediaConnection {
         JSONArray path = info.read("$..missing");
         return path.size()!=0;
     }
+
     public void ifPageMissing(DocumentContext info){
         if (checkMissingPage(info)){
-            throw new Error("Could not find this page :(");
+            throw new Error("Could not find this page : ");
         }
     }
 

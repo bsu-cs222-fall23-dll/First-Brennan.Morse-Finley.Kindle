@@ -5,9 +5,7 @@ import java.util.Scanner;
 
 public class User {
     public String getSearch(){
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println("What wikipedia article are you searching for?");
-        String input = keyboard.nextLine();
+        var input = javax.swing.JOptionPane.showInputDialog("What wikipedia article are you searching for?");
         blankCheck(input);
         return input;
     }
