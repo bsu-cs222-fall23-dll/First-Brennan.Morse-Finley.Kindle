@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 
 public class Menu extends JFrame implements ActionListener{
     static JFrame frame;
-
     public static void main(String[] args){
         String output;
         frame = new JFrame("Wikipedia Information");
@@ -14,6 +13,7 @@ public class Menu extends JFrame implements ActionListener{
         JLayeredPane panel = new JLayeredPane();
         JButton button = new JButton("close");
         button.addActionListener(function);
+        frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         User input = new User();
         Redirector redirect = new Redirector();
@@ -36,9 +36,9 @@ public class Menu extends JFrame implements ActionListener{
 
         frame.add(panel);
         frame.setSize(700, 600);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
-
     @Override
     public void actionPerformed(ActionEvent click) {
         String function = click.getActionCommand();

@@ -7,5 +7,4 @@ public class RedirectFormatter extends Redirector{
         int numOfRedirects = redirectCount(info);
         return "Redirected " + numOfRedirects + " times.";
     }
-
 }

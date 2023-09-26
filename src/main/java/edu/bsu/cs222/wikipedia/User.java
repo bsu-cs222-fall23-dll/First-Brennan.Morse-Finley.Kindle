@@ -1,7 +1,6 @@
 package edu.bsu.cs222.wikipedia;
 
-import java.io.*;
-import java.util.Scanner;
+import javax.swing.*;
 
 public class User {
     public String getSearch(){
@@ -11,8 +10,10 @@ public class User {
     }
     private void blankCheck(String search){
         if (search.equals("")){
+            JOptionPane.showMessageDialog(null, "No input! System shutting down!");
             throw new Error("No input!");
         } if (search.trim().equals("")){
+            JOptionPane.showMessageDialog(null, "No input! System shutting down!");
             throw new Error("No input!");
         }
     }
