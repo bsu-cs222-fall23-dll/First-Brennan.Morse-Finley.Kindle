@@ -27,6 +27,7 @@ public class Menu extends JFrame implements ActionListener{
 
         String information = changeLogFormatter.changeLogToString(changeLog.jsonInfo(format));
         String redirectInfo = formatRedirect.redirectFormat(changeLog.jsonInfo(format));
+
         JLabel overallFormatted = new JLabel("<html>" + information + "<br/><br/>" + redirectInfo + "</html>", JLabel.CENTER);
 
         overallFormatted.setBounds(10, 10, 660, 500);

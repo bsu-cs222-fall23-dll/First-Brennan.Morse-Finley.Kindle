@@ -22,5 +22,4 @@ public class WikipediaConnection extends User {
             throw new RuntimeException(e);
         }
     }
-
 }
