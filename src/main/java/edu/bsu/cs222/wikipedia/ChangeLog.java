@@ -12,19 +12,16 @@ public class ChangeLog extends WikipediaConnection {
     public DocumentContext jsonInfo(String input){
         return JsonPath.parse(connectWikipedia(input));
     }
-
     public ArrayList<Edit> changeLog(DocumentContext info){
         List<Map<String, Object>> changeLog = info.read("$..revisions[*]");
         ArrayList<Edit> newChangeLog = new ArrayList<>();
         for (Map<String,Object>  specificEdit : changeLog){
-            //ask for help thinking of a new variable name for specificEdit
             Edit edit =new Edit();
             edit.setTimeChanged((String) specificEdit.get("timestamp"));
             edit.setUser((String) specificEdit.get("user"));
         }
         return newChangeLog;
     }
-
     public ArrayList<String> editor(DocumentContext info){
         JSONArray editor =info.read("$..user");
         ArrayList<String> editorList = new ArrayList<>();
@@ -33,7 +30,6 @@ public class ChangeLog extends WikipediaConnection {
         }
         return editorList;
     }
-
     public ArrayList<String> time(DocumentContext info){
         JSONArray timeChanged = info.read("$..timestamp");
         ArrayList<String> timeChangedList = new ArrayList<>();
@@ -42,9 +38,7 @@ public class ChangeLog extends WikipediaConnection {
         }
         return timeChangedList;
     }
-
     public int countRevisions (DocumentContext info){
-        int revisions = editor(info).size();
-        return revisions;
+        return editor(info).size();
     }
 }

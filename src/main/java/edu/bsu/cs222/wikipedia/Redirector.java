@@ -4,17 +4,14 @@ import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 import net.minidev.json.JSONArray;
 
-import javax.swing.text.Document;
-import java.lang.reflect.Array;
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Redirector extends WikipediaConnection {
 
-    public DocumentContext jsonInfo(String input){
-        return JsonPath.parse(connectWikipedia(input));
+    public void jsonInfo(String input){
+        JsonPath.parse(connectWikipedia(input));
     }
-
-
     public int redirectCount(DocumentContext info){
         JSONArray path = info.read("$..to");
         ArrayList<String> redirectList = new ArrayList<>();
@@ -31,24 +28,18 @@ public class Redirector extends WikipediaConnection {
             return 0;
         }
     }
-    public boolean checkRedirect(DocumentContext info){
+    public boolean checkRedirect(DocumentContext info) {
         JSONArray path = info.read("$..to");
-        if (path.size() == 0){
-            return false;
-        }else{
-            return true;
-        }
+        return !path.isEmpty();
     }
-
     public boolean checkMissingPage(DocumentContext info){
         JSONArray path = info.read("$..missing");
         return path.size()!=0;
     }
-
     public void ifPageMissing(DocumentContext info){
         if (checkMissingPage(info)){
+            JOptionPane.showMessageDialog(null, "Page missing, system shutting down");
             throw new Error("Could not find this page : ");
         }
     }
-
 }
