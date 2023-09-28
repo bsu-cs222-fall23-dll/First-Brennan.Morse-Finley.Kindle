@@ -1,4 +1,4 @@
-package edu.bsu.cs222.wikipedia;
+package edu.bsu.cs222;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -39,6 +39,8 @@ public class Menu extends JFrame implements ActionListener{
         frame.setSize(700, 600);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+
+
     }
     @Override
     public void actionPerformed(ActionEvent click) {

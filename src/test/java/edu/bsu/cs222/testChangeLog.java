@@ -1,4 +1,4 @@
-package edu.bsu.cs222.wikipedia;
+package edu.bsu.cs222;
 
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
