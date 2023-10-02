@@ -12,7 +12,7 @@ public class ChangeLogFormatter extends ChangeLog{
         ArrayList<String> time = time(info);
         ArrayList<String> changeLog = new ArrayList<>();
         for (int i = 0; i < user.size(); i++){
-            changeLog.add(user.get(i)+ " " + time.get(i) + "<br/><br/>");
+            changeLog.add(user.get(i)+ " " + time.get(i) + "/n");
         }
         return changeLog;
     }

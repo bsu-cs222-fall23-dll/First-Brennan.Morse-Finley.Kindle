@@ -5,23 +5,23 @@ import com.jayway.jsonpath.JsonPath;
 import net.minidev.json.JSONArray;
 
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.List;
+//import java.util.Map;
+//import java.util.List;
 
 public class ChangeLog extends WikipediaConnection {
     public DocumentContext jsonInfo(String input){
         return JsonPath.parse(connectWikipedia(input));
     }
-    public ArrayList<Edit> changeLog(DocumentContext info){
-        List<Map<String, Object>> changeLog = info.read("$..revisions[*]");
-        ArrayList<Edit> newChangeLog = new ArrayList<>();
-        for (Map<String,Object>  specificEdit : changeLog){
-            Edit edit =new Edit();
-            edit.setTimeChanged((String) specificEdit.get("timestamp"));
-            edit.setUser((String) specificEdit.get("user"));
-        }
-        return newChangeLog;
-    }
+    //public ArrayList<Edit> changeLog(DocumentContext info){
+    //    List<Map<String, Object>> changeLog = info.read("$..revisions[*]");
+    //    ArrayList<Edit> newChangeLog = new ArrayList<>();
+    //    for (Map<String,Object>  specificEdit : changeLog){
+    //        Edit edit =new Edit();
+    //        edit.setTimeChanged((String) specificEdit.get("timestamp"));
+    //        edit.setUser((String) specificEdit.get("user"));
+    //    }
+    //    return newChangeLog;
+    //}
     public ArrayList<String> editor(DocumentContext info){
         JSONArray editor =info.read("$..user");
         ArrayList<String> editorList = new ArrayList<>();
