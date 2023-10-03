@@ -13,33 +13,30 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application{
+    public Label resultLabel;
+
+    User input = new User();
+    Redirector redirect = new Redirector();
+    ChangeLog changeLog = new ChangeLog();
+    ChangeLogFormatter changeLogFormatter = new ChangeLogFormatter();
+    RedirectFormatter formatRedirect = new RedirectFormatter();
+
     public static void main(String[] args){
         launch(args);
     }
 
-    @Override
-    public void start(Stage primaryStage){
-        String output;
+    public String combine(String input){
+        redirect.jsonInfo(input);
 
-        User input = new User();
-        Redirector redirect = new Redirector();
-        ChangeLog changeLog = new ChangeLog();
-        ChangeLogFormatter changeLogFormatter = new ChangeLogFormatter();
-        RedirectFormatter formatRedirect = new RedirectFormatter();
-
-        output = input.getSearch();
-        String format = output;
-        redirect.jsonInfo(format);
-
-        String information = changeLogFormatter.changeLogToString(changeLog.jsonInfo(format));
-        String redirectInfo = formatRedirect.redirectFormat(changeLog.jsonInfo(format));
+        String information = changeLogFormatter.changeLogToString(changeLog.jsonInfo(input));
+        String redirectInfo = formatRedirect.redirectFormat(changeLog.jsonInfo(input));
         String together = information + " " + redirectInfo;
 
-        Label label = new Label(together);
-        Scene scene = new Scene(label);
-        Label resultLabel = new Label();
+        return together;
+    }
 
-
+    @Override
+    public void start(Stage primaryStage){
 
         TextField searchField = new TextField();
         searchField.setPromptText("What Wikipedia article are you looking for?: ");
@@ -47,9 +44,12 @@ public class Main extends Application{
 
         searchButton.setOnAction(event -> {
             String userInput = searchField.getText();
+            String together = combine(userInput);
 
             resultLabel.setText("Search results for: " + userInput + "\n" + together);
         });
+
+        resultLabel = new Label();
 
         VBox vbox = new VBox(20);
         vbox.getChildren().addAll(searchField, searchButton, resultLabel);
