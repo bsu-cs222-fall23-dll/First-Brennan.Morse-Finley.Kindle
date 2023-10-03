@@ -1,4 +1,4 @@
-package edu.bsu.cs222.wikipedia;
+package edu.bsu.cs222;
 
 import java.io.IOException;
 import java.net.URLConnection;
@@ -22,5 +22,4 @@ public class WikipediaConnection extends User {
             throw new RuntimeException(e);
         }
     }
-
 }
