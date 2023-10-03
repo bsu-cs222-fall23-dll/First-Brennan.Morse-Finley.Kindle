@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 public class Main extends Application{
     public Label resultLabel;
 
-    User input = new User();
+    User userError = new User();
     Redirector redirect = new Redirector();
     ChangeLog changeLog = new ChangeLog();
     ChangeLogFormatter changeLogFormatter = new ChangeLogFormatter();
@@ -44,9 +44,18 @@ public class Main extends Application{
 
         searchButton.setOnAction(event -> {
             String userInput = searchField.getText();
-            String together = combine(userInput);
+            String errorCheck = userError.getSearch(userInput);
 
-            resultLabel.setText("Search results for: " + userInput + "\n" + together);
+            if (errorCheck == "No input!") {
+                resultLabel.setText("Search results for: " + userInput + "\n" + errorCheck);
+            } else {
+                String together = combine(userInput);
+                resultLabel.setText("Search results for: " + userInput + "\n" + together);
+            }
+
+
+
+
         });
 
         resultLabel = new Label();

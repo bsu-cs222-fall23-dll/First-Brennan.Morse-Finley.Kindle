@@ -1,20 +1,18 @@
 package edu.bsu.cs222;
 
-import javax.swing.*;
-
 public class User {
-    public String getSearch(){
-        var input = javax.swing.JOptionPane.showInputDialog("What wikipedia article are you searching for?");
-        blankCheck(input);
-        return input;
+    public String getSearch(String userInput){
+        String errorCheck = blankCheck(userInput);
+        return errorCheck;
     }
-    private void blankCheck(String search){
-        if (search.equals("")){
-            JOptionPane.showMessageDialog(null, "No input! System shutting down!");
+    private String blankCheck(String userInput){
+        if (userInput.equals("")){
             throw new Error("No input!");
-        } if (search.trim().equals("")){
-            JOptionPane.showMessageDialog(null, "No input! System shutting down!");
+            return "No input!";
+        } if (userInput.trim().equals("")){
             throw new Error("No input!");
+            return "No input!";
         }
+        return userInput;
     }
 }
