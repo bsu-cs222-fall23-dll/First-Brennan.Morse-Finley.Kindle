@@ -7,10 +7,8 @@ public class User {
     }
     private String blankCheck(String userInput){
         if (userInput.equals("")){
-            throw new Error("No input!");
             return "No input!";
         } if (userInput.trim().equals("")){
-            throw new Error("No input!");
             return "No input!";
         }
         return userInput;

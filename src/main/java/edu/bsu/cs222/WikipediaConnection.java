@@ -1,5 +1,6 @@
 package edu.bsu.cs222;
 
+import javax.management.RuntimeMBeanException;
 import java.io.IOException;
 import java.net.URLConnection;
 import java.net.URLEncoder;
@@ -11,8 +12,9 @@ public class WikipediaConnection extends User {
         String title = URLEncoder.encode(search, Charset.defaultCharset());
         return String.format("https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=%s&rvprop=timestamp|user&rvlimit=27&redirects", title);
     }
-    public InputStream connectWikipedia(String input){
+    public InputStream connectWikipedia(String input) {
         String urlFormatted = makeURL(input);
+
         try{
             java.net.URL url = new java.net.URL(urlFormatted);
             URLConnection connect = url.openConnection();
@@ -22,4 +24,5 @@ public class WikipediaConnection extends User {
             throw new RuntimeException(e);
         }
     }
+
 }

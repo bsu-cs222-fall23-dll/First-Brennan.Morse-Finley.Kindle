@@ -2,3 +2,4 @@
 that throws an error if the page isnt found?
 
 //Menu needs to connect EVERYTHING
+//Make menu iterate through each of the objects in the changelog array

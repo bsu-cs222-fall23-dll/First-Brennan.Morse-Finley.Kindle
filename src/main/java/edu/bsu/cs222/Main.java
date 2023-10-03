@@ -22,6 +22,7 @@ public class Main extends Application{
     RedirectFormatter formatRedirect = new RedirectFormatter();
 
     public static void main(String[] args){
+
         launch(args);
     }
 
@@ -37,45 +38,55 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage){
+        try{
+            TextField searchField = new TextField();
+            searchField.setPromptText("What Wikipedia article are you looking for?: ");
+            Button searchButton = new Button("Search");
 
-        TextField searchField = new TextField();
-        searchField.setPromptText("What Wikipedia article are you looking for?: ");
-        Button searchButton = new Button("Search");
+            searchButton.setOnAction(event -> {
+                String userInput = searchField.getText();
+                String errorCheck = userError.getSearch(userInput);
 
-        searchButton.setOnAction(event -> {
-            String userInput = searchField.getText();
-            String errorCheck = userError.getSearch(userInput);
-
-            if (errorCheck == "No input!") {
-                resultLabel.setText("Search results for: " + userInput + "\n" + errorCheck);
-            } else {
-                String together = combine(userInput);
-                resultLabel.setText("Search results for: " + userInput + "\n" + together);
-            }
-
-
-
-
-        });
-
-        resultLabel = new Label();
-
-        VBox vbox = new VBox(20);
-        vbox.getChildren().addAll(searchField, searchButton, resultLabel);
-
-        Scene scenes = new Scene(vbox);
+                if (errorCheck == "No input!") {
+                    resultLabel.setText("Search results for: " + userInput + "\n" + errorCheck);
+                } else {
+                    String together = combine(userInput);
+                    resultLabel.setText("Search results for: " + userInput + "\n" + together);
+                }
 
 
 
-        Screen screen = Screen.getPrimary();
-        Rectangle2D bounds = screen.getVisualBounds();
 
-        primaryStage.setX(bounds.getMinX());
-        primaryStage.setY(bounds.getMinY());
-        primaryStage.setWidth(bounds.getWidth());
-        primaryStage.setHeight(bounds.getHeight());
+            });
 
-        primaryStage.setScene(scenes);
-        primaryStage.show();
+            resultLabel = new Label();
+
+            VBox vbox = new VBox(20);
+            vbox.getChildren().addAll(searchField, searchButton, resultLabel);
+
+            Scene scenes = new Scene(vbox);
+
+
+
+            Screen screen = Screen.getPrimary();
+            Rectangle2D bounds = screen.getVisualBounds();
+
+            primaryStage.setX(bounds.getMinX());
+            primaryStage.setY(bounds.getMinY());
+            primaryStage.setWidth(bounds.getWidth());
+            primaryStage.setHeight(bounds.getHeight());
+
+            primaryStage.setScene(scenes);
+            primaryStage.show();
+
+        }catch(RuntimeException ioException){
+            //do error stuff
+            System.exit(0);
+
+        }catch (Error error){
+            //do error stuff?
+            System.exit(0);
+        }
+
     }
 }

@@ -28,6 +28,14 @@ public class Redirector extends WikipediaConnection {
             return 0;
         }
     }
+    public String redirectPageName(DocumentContext info){
+        JSONArray path = info.read("$..to");
+        if (checkRedirect(info)){
+            String redirectName=path.get(0).toString();
+            return redirectName;
+        }
+        return null;
+    }
     public boolean checkRedirect(DocumentContext info) {
         JSONArray path = info.read("$..to");
         return !path.isEmpty();
