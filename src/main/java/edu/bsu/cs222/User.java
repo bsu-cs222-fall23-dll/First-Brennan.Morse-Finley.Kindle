@@ -2,8 +2,7 @@ package edu.bsu.cs222;
 
 public class User {
     public String getSearch(String userInput){
-        String errorCheck = blankCheck(userInput);
-        return errorCheck;
+        return blankCheck(userInput);
     }
     private String blankCheck(String userInput){
         if (userInput.equals("")){
