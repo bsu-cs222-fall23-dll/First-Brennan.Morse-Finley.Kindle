@@ -14,6 +14,11 @@ public class TestChangeLogFormatter extends ChangeLogFormatter {
     @Test
     public void testChangeLogFormatted(){
         String result = changeLogToString(sample);
-        Assertions.assertEquals("Miklogfeather 2023-09-07T18:34:43Z<br/><br/>ModernDayTrilobite 2023-09-07T17:21:48Z<br/><br/>Freefry 2023-09-02T15:06:03Z<br/><br/>Freefry 2023-09-02T15:05:04Z<br/><br/>", result);
+        Assertions.assertEquals("""
+                Date: 2023-09-07T18:34:43Z     |     User: Miklogfeather
+                Date: 2023-09-07T17:21:48Z     |     User: ModernDayTrilobite
+                Date: 2023-09-02T15:06:03Z     |     User: Freefry
+                Date: 2023-09-02T15:05:04Z     |     User: Freefry
+                """, result);
     }
 }
