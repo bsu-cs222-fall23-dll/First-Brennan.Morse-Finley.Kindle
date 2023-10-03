@@ -3,7 +3,7 @@ package edu.bsu.cs222;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class testConnection {
+public class TestConnection {
     @Test
     public void testCreateURL(){
         WikipediaConnection connection = new WikipediaConnection();

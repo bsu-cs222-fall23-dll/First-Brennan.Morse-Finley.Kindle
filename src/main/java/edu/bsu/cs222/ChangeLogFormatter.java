@@ -12,7 +12,20 @@ public class ChangeLogFormatter extends ChangeLog{
         ArrayList<String> time = time(info);
         ArrayList<String> changeLog = new ArrayList<>();
         for (int i = 0; i < user.size(); i++){
-            changeLog.add(user.get(i)+ " " + time.get(i) + "\n");
+            changeLog.add("Date: "+ time.get(i) + "     |     User: " + user.get(i) + "\n");
+        }
+        return changeLog;
+    }
+    public String changeLogToStringHTML (DocumentContext info){
+        ArrayList<String> changeLog=timesAndUsersHTML(info);
+        return String.join("",changeLog);
+    }
+    public ArrayList<String> timesAndUsersHTML (DocumentContext info){
+        ArrayList<String> user = editor(info);
+        ArrayList<String> time = time(info);
+        ArrayList<String> changeLog = new ArrayList<>();
+        for (int i = 0; i < user.size(); i++){
+            changeLog.add("Date: "+ time.get(i) + "     |     User: " + user.get(i) + "<br/>");
         }
         return changeLog;
     }

@@ -2,10 +2,7 @@ package edu.bsu.cs222;
 
 import com.jayway.jsonpath.DocumentContext;
 
-import javax.print.Doc;
-
 public class RedirectFormatter extends Redirector{
-
     public String redirectFormat(DocumentContext info){
         String count = redirectCountFormat(info);
         String pageName = redirectPageFormat(info);
@@ -19,5 +16,4 @@ public class RedirectFormatter extends Redirector{
         String redirectedPageName = redirectPageName(info);
         return "Redirected to: " + redirectedPageName;
     }
-
 }

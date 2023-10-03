@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class Redirector extends WikipediaConnection {
-
     public void jsonInfo(String input){
         JsonPath.parse(connectWikipedia(input));
     }
@@ -31,8 +30,7 @@ public class Redirector extends WikipediaConnection {
     public String redirectPageName(DocumentContext info){
         JSONArray path = info.read("$..to");
         if (checkRedirect(info)){
-            String redirectName=path.get(0).toString();
-            return redirectName;
+            return path.get(0).toString();
         }
         return null;
     }

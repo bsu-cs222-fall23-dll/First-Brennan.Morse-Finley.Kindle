@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
 
-public class testChangeLogFormatter extends ChangeLogFormatter {
+public class TestChangeLogFormatter extends ChangeLogFormatter {
     InputStream sampleTest = Thread.currentThread().getContextClassLoader().getResourceAsStream("sample.json");
     DocumentContext sample = JsonPath.parse(sampleTest);
 

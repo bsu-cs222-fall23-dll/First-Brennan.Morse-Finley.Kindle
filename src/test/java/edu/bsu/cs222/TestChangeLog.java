@@ -8,15 +8,13 @@ import org.junit.jupiter.api.Test;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public class testChangeLog extends ChangeLog{
+public class TestChangeLog extends ChangeLog{
     InputStream sampleTest = Thread.currentThread().getContextClassLoader().getResourceAsStream("sample.json");
     DocumentContext sample = JsonPath.parse(sampleTest);
     @Test
     public void testChangeLogUser(){
-
         ArrayList<String> result = editor(sample);
         Assertions.assertEquals("Miklogfeather",result.get(0));
-
     }
     @Test
     public void testChangeLogTime(){

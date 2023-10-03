@@ -5,8 +5,6 @@ import com.jayway.jsonpath.JsonPath;
 import net.minidev.json.JSONArray;
 
 import java.util.ArrayList;
-//import java.util.Map;
-//import java.util.List;
 
 public class ChangeLog extends WikipediaConnection {
     public DocumentContext jsonInfo(String input){
